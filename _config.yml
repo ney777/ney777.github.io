@@ -2,10 +2,10 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank # the website title (if blank, full name will be used instead)
+title: Qian CHEN's Homepage # the website title (if blank, full name will be used instead)
 first_name: Qian
 middle_name: 
-last_name: Chen
+last_name: CHEN
 contact_note: >
   chenqian.phd@gmail.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
