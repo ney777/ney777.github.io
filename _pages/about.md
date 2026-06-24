@@ -6,8 +6,8 @@ subtitle: Federated Learning · Trustworthy AI · Healthcare AI · Foundation Mo
 
 profile:
   align: right
-  image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image: CQ.jpg
+  image_circular: ture # crops the image to make it circular
   more_info: >
     <p>Institute of Computing Technology</p>
     <p>Chinese Academy of Sciences</p>
