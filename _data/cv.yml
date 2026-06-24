@@ -32,7 +32,7 @@ cv:
         studyType: M.Eng.
         start_date: 2017-09
         end_date: 2020-06
-        summary: "Advisor: Prof. Xuejun Zhang; visiting student at ICT, CAS from 2017-03 to 2020-09"
+        summary: "Advisor: Prof. Yiqiang Chen and Prof. Xuejun Zhang; visiting student at ICT, CAS"
 
       - institution: Tianjin Agricultural University
         location: Tianjin, China
@@ -48,7 +48,7 @@ cv:
         start_date: 2025
         end_date: Present
         highlights:
-          - Research on trustworthy model fusion, federated learning, privacy-preserving AI, healthcare AI, and AI for science.
+          - Research on trustworthy model fusion, federated learning, privacy-preserving AI, AI Agents, and AI for science.
 
       - position: Program Committee Member
         company: AAAI-26 and AAAI 2026 AI Alignment Track
@@ -56,7 +56,7 @@ cv:
         end_date: Present
 
       - position: Reviewer
-        company: IEEE TKDE, IEEE TNNLS, ICME, UIC, AAAI, IJCAI
+        company: IEEE TKDE, IEEE TMC, IEEE TNNLS, ICME, AAAI, IJCAI
         start_date: 2022
         end_date: Present
 
@@ -70,20 +70,21 @@ cv:
     Volunteer: []
 
     Interests:
-      - name: Trustworthy Federated Learning
+      - name: Trustworthy Model Collaboration
         keywords:
+          - federated learning
           - pre-trained model fusion
           - transfer learning
           - privacy
           - fairness
 
-      - name: Multi-source Data Fusion
+      - name: Multi-source Information Fusion
         keywords:
           - model fusion
           - multimodal fusion
           - sensor networks
 
-      - name: Foundation Models
+      - name: Foundation Models and Agent Network
         keywords:
           - foundation model understanding and fusion
           - model federated networks
@@ -112,8 +113,8 @@ cv:
       - title: First Prize Scholarship, University of Chinese Academy of Sciences
         date: 2022
 
-      - title: Outstanding Thesis Award, Lanzhou Jiaotong University
-        date: 2020
+      # - title: Outstanding Thesis Award, Lanzhou Jiaotong University
+      #   date: 2020
 
     Languages:
       - name: Chinese
