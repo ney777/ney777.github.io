@@ -4,16 +4,15 @@ cv:
   email: chenqian20b@ict.ac.cn
   location: Beijing, China
   image: ""
-
   summary: >
-    Ph.D. researcher at the Institute of Computing Technology, Chinese Academy of Sciences.
-    My research focuses on trustworthy federated learning, privacy-preserving model fusion,
-    healthcare AI, multi-source data fusion, and foundation model collaboration.
+    Ph.D. researcher at the Institute of Computing Technology, Chinese Academy
+    of Sciences. My research focuses on trustworthy federated learning,
+    privacy-preserving model fusion, healthcare AI, multi-source data fusion,
+    and foundation model collaboration.
 
   social_networks:
     - network: GitHub
       username: ney777
-
     - network: Google Scholar
       username: XiCmvLMAAAAJ
 
@@ -43,6 +42,14 @@ cv:
         end_date: 2016-06
 
     Experience:
+      - position: Engineer / Researcher
+        company: Institute of Computing Technology, Chinese Academy of Sciences
+        location: Beijing, China
+        start_date: 2025
+        end_date: Present
+        highlights:
+          - Research on trustworthy model fusion, federated learning, privacy-preserving AI, healthcare AI, and AI for science.
+
       - position: Program Committee Member
         company: AAAI-26 and AAAI 2026 AI Alignment Track
         start_date: 2025
@@ -59,6 +66,8 @@ cv:
         end_date: Present
         highlights:
           - Contributed to IEEE guides including P2894, P2961, and P2807.6.
+
+    Volunteer: []
 
     Interests:
       - name: Trustworthy Federated Learning
@@ -87,85 +96,6 @@ cv:
           - emotion recognition
           - human activity recognition
 
-    Publications:
-      - title: "PrivFusion: Privacy-Preserving Model Fusion via Decentralized Federated Graph Matching"
-        authors:
-          - Qian Chen
-          - Yiqiang Chen
-          - Xinlong Jiang
-          - Teng Zhang
-          - Weiwei Dai
-          - Wuliang Huang
-        publisher: IEEE Transactions on Knowledge and Data Engineering
-        releaseDate: 2024
-        summary: CCF A journal, JCR Q1, IF 10.4
-
-      - title: "Model Trip: Enhancing Privacy and Fairness in Model Fusion Across Multi-Federations for Trustworthy Global Healthcare"
-        authors:
-          - Qian Chen
-          - Yiqiang Chen
-          - Bingjie Yan
-          - Xinlong Jiang
-          - Lixin Fan
-          - Qiang Yang
-        publisher: IEEE International Conference on Data Engineering
-        releaseDate: 2024
-        summary: CCF A conference, oral presentation
-
-      - title: "Buffalo: Biomedical Vision-Language Understanding with Cross-Modal Prototype and Federated Foundation Model Collaboration"
-        authors:
-          - Bingjie Yan
-          - Qian Chen
-          - Yiqiang Chen
-          - Xinlong Jiang
-        publisher: ACM International Conference on Information and Knowledge Management
-        releaseDate: 2024
-        summary: CCF B conference, oral presentation
-
-      - title: "MoFedNet: Semantic Link is All Model Need"
-        authors:
-          - Yiqiang Chen
-          - Xinlong Jiang
-          - Qian Chen
-        publisher: Journal of Computer Science and Technology
-        releaseDate: 2025
-        summary: CCF B journal; Best Paper Award at CCF Computility 2025
-
-      - title: "Ten Challenging Problems in Federated Foundation Models"
-        authors:
-          - Tao Fan
-          - Hanlin Gu
-          - Xuemei Cao
-          - Chee Seng Chan
-          - Qian Chen
-          - Yiqiang Chen
-          - Qiang Yang
-        publisher: IEEE Transactions on Knowledge and Data Engineering
-        releaseDate: 2025
-        summary: CCF A journal, JCR Q1, IF 10.4
-
-    Projects:
-      - name: Incremental Model Fusion for Multi-Center Medical Collaboration
-        start_date: 2025-01
-        end_date: 2028-12
-        highlights:
-          - National Natural Science Foundation of China, General Program
-          - Developed secure and efficient model fusion strategies for collaborative medical imaging and genomics scenarios.
-
-      - name: Federated Transfer Learning for Early Warning of Parkinson's Disease
-        start_date: 2020-01
-        end_date: 2023-12
-        highlights:
-          - National Natural Science Foundation of China, General Program
-          - Built federated transfer learning methods for multi-source healthcare data without direct data sharing.
-
-      - name: Intelligent Big Data Platform for Eye Health Management
-        start_date: 2021-01
-        end_date: 2022-12
-        highlights:
-          - Key Regional STS Project, Chinese Academy of Sciences
-          - Worked on data processing, analysis, and modeling for ocular-health monitoring and early diagnosis.
-
     Awards:
       - title: Outstanding Graduate, Beijing Municipal Education Commission
         date: 2025
@@ -184,9 +114,6 @@ cv:
 
       - title: Outstanding Thesis Award, Lanzhou Jiaotong University
         date: 2020
-
-      - title: National Second Prize, National Undergraduate IoT Design Contest
-        date: 2018
 
     Languages:
       - name: Chinese
