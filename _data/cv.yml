@@ -1,14 +1,14 @@
 cv:
   name: Qian Chen
-  label: PhD in Computer Science
+  label: Ph.D. in Computer Science
   email: chenqian20b@ict.ac.cn
   location: Beijing, China
   image: ""
 
   summary: >
-    PhD researcher at the Institute of Computing Technology, Chinese Academy of Sciences.
-    Research interests include ubiquitous computing, federated learning, trustworthy AI,
-    privacy-preserving machine learning, and model fusion for healthcare applications.
+    Ph.D. researcher at the Institute of Computing Technology, Chinese Academy of Sciences.
+    My research focuses on trustworthy federated learning, privacy-preserving model fusion,
+    healthcare AI, multi-source data fusion, and foundation model collaboration.
 
   social_networks:
     - network: GitHub
@@ -16,62 +16,79 @@ cv:
 
     - network: Google Scholar
       username: XiCmvLMAAAAJ
-    # 可选：如果后续要加 Scholar / LinkedIn，我可以直接帮你补字段
 
   sections:
     Education:
       - institution: Institute of Computing Technology, Chinese Academy of Sciences
         location: Beijing, China
-        area: Computer Application Technology
-        studyType: PhD
-        start_date: 2020
-        end_date: 2025
+        area: Computer Science
+        studyType: Ph.D.
+        start_date: 2020-09
+        end_date: 2025-06
+        summary: "Advisor: Prof. Yiqiang Chen"
 
       - institution: Lanzhou Jiaotong University
         location: Lanzhou, China
-        area: Computer Technology
-        studyType: MEng
-        start_date: 2017
-        end_date: 2020
+        area: Computer Science
+        studyType: M.Eng.
+        start_date: 2017-09
+        end_date: 2020-06
+        summary: "Advisor: Prof. Xuejun Zhang; visiting student at ICT, CAS from 2017-03 to 2020-09"
 
       - institution: Tianjin Agricultural University
         location: Tianjin, China
-        area: Computer Science and Technology
-        studyType: BEng
-        start_date: 2012
-        end_date: 2016
+        area: Computer Science
+        studyType: B.Eng.
+        start_date: 2012-09
+        end_date: 2016-06
 
     Experience:
-      - company: Institute of Computing Technology, Chinese Academy of Sciences
-        position: Research Assistant / PhD Researcher
-        location: Beijing, China
-        start_date: 2017
+      - position: Program Committee Member
+        company: AAAI-26 and AAAI 2026 AI Alignment Track
+        start_date: 2025
+        end_date: Present
+
+      - position: Reviewer
+        company: IEEE TKDE, IEEE TNNLS, ICME, UIC, AAAI, IJCAI
+        start_date: 2022
+        end_date: Present
+
+      - position: Participant
+        company: IEEE Standard Development
+        start_date: 2022-04
         end_date: Present
         highlights:
-          - Federated learning and decentralized model fusion for privacy-sensitive healthcare scenarios
-          - Trustworthy AI with fairness, interpretability, and privacy guarantees
-          - Large-scale multi-institutional collaboration on medical AI systems
+          - Contributed to IEEE guides including P2894, P2961, and P2807.6.
 
-    Projects:
-      - name: Incremental Model Fusion for Multi-Center Medical Collaboration
-        start_date: 2025
-        highlights:
-          - National Natural Science Foundation of China (General Program)
+    Interests:
+      - name: Trustworthy Federated Learning
+        keywords:
+          - pre-trained model fusion
+          - transfer learning
+          - privacy
+          - fairness
 
-      - name: Federated Transfer Learning for Early Parkinson’s Disease Warning
-        start_date: 2020
-        end_date: 2023
-        highlights:
-          - National Natural Science Foundation of China (General Program)
+      - name: Multi-source Data Fusion
+        keywords:
+          - model fusion
+          - multimodal fusion
+          - sensor networks
 
-      - name: Cross-Media Association and Intelligent Matching of Service Content Resources
-        start_date: 2019
-        end_date: 2022
-        highlights:
-          - National Key R&D Program of China
+      - name: Foundation Models
+        keywords:
+          - foundation model understanding and fusion
+          - model federated networks
+          - agentic workflows
+
+      - name: Applications
+        keywords:
+          - medical image analysis
+          - wearable healthcare
+          - emotion recognition
+          - human activity recognition
 
     Publications:
-      - title: PrivFusion: Privacy-Preserving Model Fusion via Decentralized Federated Graph Matching
+      - title: "PrivFusion: Privacy-Preserving Model Fusion via Decentralized Federated Graph Matching"
         authors:
           - Qian Chen
           - Yiqiang Chen
@@ -79,56 +96,101 @@ cv:
           - Teng Zhang
           - Weiwei Dai
           - Wuliang Huang
-        publisher: IEEE Transactions on Knowledge and Data Engineering (TKDE)
+        publisher: IEEE Transactions on Knowledge and Data Engineering
         releaseDate: 2024
-        summary: CCF-A journal, IF 10.4
+        summary: CCF A journal, JCR Q1, IF 10.4
 
-      - title: Model Trip: Enhancing Privacy and Fairness in Model Fusion Across Multi-Federations for Trustworthy Global Healthcare
+      - title: "Model Trip: Enhancing Privacy and Fairness in Model Fusion Across Multi-Federations for Trustworthy Global Healthcare"
         authors:
           - Qian Chen
           - Yiqiang Chen
-          - ...
+          - Bingjie Yan
+          - Xinlong Jiang
+          - Lixin Fan
           - Qiang Yang
-        publisher: IEEE ICDE
+        publisher: IEEE International Conference on Data Engineering
         releaseDate: 2024
-        summary: CCF-A conference
+        summary: CCF A conference, oral presentation
 
-      - title: FedEYE: A Scalable and Flexible End-to-End Federated Learning Platform for Ophthalmology
+      - title: "Buffalo: Biomedical Vision-Language Understanding with Cross-Modal Prototype and Federated Foundation Model Collaboration"
         authors:
           - Bingjie Yan
           - Qian Chen
-          - ...
           - Yiqiang Chen
-        publisher: Patterns
+          - Xinlong Jiang
+        publisher: ACM International Conference on Information and Knowledge Management
         releaseDate: 2024
-        summary: Cell Press, JCR Q1
+        summary: CCF B conference, oral presentation
 
-    Patents:
-      - name: Cross-Modal Transfer Learning Method
-        summary: Authorized Chinese Patent
+      - title: "MoFedNet: Semantic Link is All Model Need"
+        authors:
+          - Yiqiang Chen
+          - Xinlong Jiang
+          - Qian Chen
+        publisher: Journal of Computer Science and Technology
+        releaseDate: 2025
+        summary: CCF B journal; Best Paper Award at CCF Computility 2025
 
-      - name: Federated Learning-Based Medical Model Construction Method
-        summary: Chinese Patent (Filed)
+      - title: "Ten Challenging Problems in Federated Foundation Models"
+        authors:
+          - Tao Fan
+          - Hanlin Gu
+          - Xuemei Cao
+          - Chee Seng Chan
+          - Qian Chen
+          - Yiqiang Chen
+          - Qiang Yang
+        publisher: IEEE Transactions on Knowledge and Data Engineering
+        releaseDate: 2025
+        summary: CCF A journal, JCR Q1, IF 10.4
+
+    Projects:
+      - name: Incremental Model Fusion for Multi-Center Medical Collaboration
+        start_date: 2025-01
+        end_date: 2028-12
+        highlights:
+          - National Natural Science Foundation of China, General Program
+          - Developed secure and efficient model fusion strategies for collaborative medical imaging and genomics scenarios.
+
+      - name: Federated Transfer Learning for Early Warning of Parkinson's Disease
+        start_date: 2020-01
+        end_date: 2023-12
+        highlights:
+          - National Natural Science Foundation of China, General Program
+          - Built federated transfer learning methods for multi-source healthcare data without direct data sharing.
+
+      - name: Intelligent Big Data Platform for Eye Health Management
+        start_date: 2021-01
+        end_date: 2022-12
+        highlights:
+          - Key Regional STS Project, Chinese Academy of Sciences
+          - Worked on data processing, analysis, and modeling for ocular-health monitoring and early diagnosis.
 
     Awards:
-      - title: Outstanding PhD Graduate of Beijing
+      - title: Outstanding Graduate, Beijing Municipal Education Commission
         date: 2025
 
-      - title: National Scholarship for PhD Students
+      - title: National Scholarship for Ph.D. Students, Ministry of Education of China
         date: 2024
 
-      - title: Outstanding Graduate Student, UCAS
-        date: 2025
+      - title: Merit Student, University of Chinese Academy of Sciences
+        date: 2024
 
-    Skills:
-      - name: Research Areas
-        keywords: >
-          Federated Learning, Trustworthy AI, Model Fusion,
-          Privacy-Preserving Machine Learning, Healthcare AI, Ubiquitous Computing
+      - title: Merit Student, University of Chinese Academy of Sciences
+        date: 2023
+
+      - title: First Prize Scholarship, University of Chinese Academy of Sciences
+        date: 2022
+
+      - title: Outstanding Thesis Award, Lanzhou Jiaotong University
+        date: 2020
+
+      - title: National Second Prize, National Undergraduate IoT Design Contest
+        date: 2018
 
     Languages:
       - name: Chinese
         summary: Native
 
       - name: English
-        summary: Proficient
+        summary: Professional working proficiency
