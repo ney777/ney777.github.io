@@ -116,6 +116,50 @@
         a.award.btn {
           border-color: var(--global-highlight-color);
         }
+
+        .pub-tags {
+          display: inline-flex;
+          flex-wrap: wrap;
+          gap: 0.35rem;
+          margin-right: 0.35rem;
+          vertical-align: middle;
+        }
+
+        .pub-tag {
+          display: inline-block;
+          border-radius: 999px;
+          color: #fff;
+          font-size: 0.78rem;
+          font-weight: 700;
+          line-height: 1;
+          padding: 0.28rem 0.55rem;
+          white-space: nowrap;
+        }
+
+        .pub-tag-ccf-a {
+          background: #e85b35;
+        }
+
+        .pub-tag-ccf-b {
+          background: #f3b43f;
+        }
+
+        .pub-tag-ccf-c {
+          background: #7ab648;
+        }
+
+        .pub-tag-jcr-q1 {
+          background: #4b8f6b;
+        }
+
+        .pub-tag-jcr-q2 {
+          background: #3f79b7;
+        }
+
+        .pub-tag-preprint,
+        .pub-tag-neutral {
+          background: #73777d;
+        }
       }
 
       .badges {

@@ -190,9 +190,27 @@
     <!-- Links/Buttons -->
     <div class="links">
       {% if entry.award %}
-        <a class="award btn btn-sm z-depth-0" role="button">
-          {%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}
-        </a>
+        <span class="pub-tags" aria-label="{{ entry.award | strip_html | strip }}">
+          {% assign award_tags = entry.award | split: ';' %}
+          {% for award_tag in award_tags %}
+            {% assign clean_award = award_tag | strip %}
+            {% assign award_class = 'pub-tag-neutral' %}
+            {% if clean_award contains 'CCF A' %}
+              {% assign award_class = 'pub-tag-ccf-a' %}
+            {% elsif clean_award contains 'CCF B' %}
+              {% assign award_class = 'pub-tag-ccf-b' %}
+            {% elsif clean_award contains 'CCF C' %}
+              {% assign award_class = 'pub-tag-ccf-c' %}
+            {% elsif clean_award contains 'JCR Q1' %}
+              {% assign award_class = 'pub-tag-jcr-q1' %}
+            {% elsif clean_award contains 'JCR Q2' %}
+              {% assign award_class = 'pub-tag-jcr-q2' %}
+            {% elsif clean_award contains 'Preprint' %}
+              {% assign award_class = 'pub-tag-preprint' %}
+            {% endif %}
+            <span class="pub-tag {{ award_class }}">{{ clean_award }}</span>
+          {% endfor %}
+        </span>
       {% endif %}
       {% if entry.abstract %}
         <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
