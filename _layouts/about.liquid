@@ -71,10 +71,10 @@ layout: default
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <section class="about-card about-card--publications">
-        <h2 class="about-card__title">
-          <a href="{{ '/publications/' | relative_url }}">Selected Publications</a>
-        </h2>
+      <section class="card mt-3 p-3 about-card about-card--publications">
+        <h3 class="card-title font-weight-medium about-card__title">
+          <a href="{{ '/publications/' | relative_url }}">selected publications</a>
+        </h3>
         {% include selected_papers.liquid %}
       </section>
     {% endif %}
