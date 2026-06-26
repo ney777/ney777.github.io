@@ -33,7 +33,7 @@ about_cv:
 announcements:
   enabled: true # includes a list of news items
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 8 # leave blank to include all the news in the `_news` folder
+  limit: 5 # visible news rows before scrolling
 
 latest_posts:
   enabled: false
