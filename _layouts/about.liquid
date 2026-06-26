@@ -40,6 +40,14 @@ layout: default
 
     <div class="clearfix">{{ content }}</div>
 
+    <!-- Google Scholar stats -->
+    {% if page.scholar_stats and page.scholar_stats.enabled %}
+      <h2>
+        <a href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}" style="color: inherit">google scholar</a>
+      </h2>
+      {% include scholar_stats.liquid %}
+    {% endif %}
+
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>

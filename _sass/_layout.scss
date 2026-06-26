@@ -40,6 +40,60 @@ body.sticky-bottom-footer {
   }
 }
 
+.scholar-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0.5rem 0 1.75rem;
+  padding: 1rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0.5rem;
+  background: var(--global-card-bg-color);
+}
+
+.scholar-stats__metric {
+  min-width: 0;
+}
+
+.scholar-stats__label {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--global-text-color-light);
+  font-size: 0.85rem;
+}
+
+.scholar-stats__value {
+  color: var(--global-theme-color);
+  font-size: 1.45rem;
+  line-height: 1.15;
+}
+
+.scholar-stats__metric--primary .scholar-stats__value {
+  font-size: 1.75rem;
+}
+
+.scholar-stats__meta {
+  grid-column: 1 / -1;
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+}
+
+.scholar-stats__meta a {
+  margin-left: 0.35rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 576px) {
+  .scholar-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .scholar-stats__meta a {
+    display: inline-block;
+    margin-left: 0;
+  }
+}
+
 // TODO: redefine content layout.
 
 /******************************************************************************

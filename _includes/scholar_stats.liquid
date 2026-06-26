@@ -1,0 +1,58 @@
+{% assign scholar_userid = site.data.socials.scholar_userid | default: '' %}
+{% assign scholar_url = 'https://scholar.google.com/citations?user=' | append: scholar_userid %}
+{% assign citation_metadata = site.data.citations.metadata %}
+{% assign citation_userid = citation_metadata.scholar_userid | default: '' %}
+{% assign citation_data_valid = false %}
+{% if scholar_userid != '' and citation_userid == scholar_userid %}
+  {% assign citation_data_valid = true %}
+{% endif %}
+
+{% assign total_citations = citation_metadata.total_citations | default: 0 | plus: 0 %}
+{% if citation_data_valid and total_citations == 0 and site.data.citations.papers %}
+  {% for item in site.data.citations.papers %}
+    {% assign paper = item[1] %}
+    {% assign paper_citations = paper.citations | default: 0 | plus: 0 %}
+    {% assign total_citations = total_citations | plus: paper_citations %}
+  {% endfor %}
+{% endif %}
+
+<div class="scholar-stats">
+  <div class="scholar-stats__metric scholar-stats__metric--primary">
+    <span class="scholar-stats__label">Citations</span>
+    <strong class="scholar-stats__value">
+      {% if citation_data_valid %}
+        {{ total_citations }}
+      {% else %}
+        Sync pending
+      {% endif %}
+    </strong>
+  </div>
+  <div class="scholar-stats__metric">
+    <span class="scholar-stats__label">h-index</span>
+    <strong class="scholar-stats__value">
+      {% if citation_data_valid %}
+        {{ citation_metadata.h_index | default: '—' }}
+      {% else %}
+        —
+      {% endif %}
+    </strong>
+  </div>
+  <div class="scholar-stats__metric">
+    <span class="scholar-stats__label">i10-index</span>
+    <strong class="scholar-stats__value">
+      {% if citation_data_valid %}
+        {{ citation_metadata.i10_index | default: '—' }}
+      {% else %}
+        —
+      {% endif %}
+    </strong>
+  </div>
+  <div class="scholar-stats__meta">
+    {% if citation_data_valid %}
+      Updated daily. Last synced {{ citation_metadata.last_updated | date: '%b %d, %Y' }}.
+    {% else %}
+      Waiting for the next daily Google Scholar sync.
+    {% endif %}
+    <a href="{{ scholar_url }}" target="_blank" rel="noopener noreferrer">View profile</a>
+  </div>
+</div>
