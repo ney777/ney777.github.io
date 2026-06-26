@@ -9,7 +9,7 @@
     {% for award in cv_sections.Awards %}
       <div class="about-list__item">
         <span>{{ award.title }}</span>
-        <time>{{ award.date }}</time>
+        <time class="about-chip about-chip--year">{{ award.date }}</time>
       </div>
     {% endfor %}
   </div>
@@ -22,7 +22,7 @@
   </h3>
   <div class="about-service">
     {% for service in page.about_cv.academic_service %}
-      <p><strong>{{ service.role }}:</strong> {{ service.text }}</p>
+      <p><strong class="about-chip about-chip--service">{{ service.role }}</strong> {{ service.text }}</p>
     {% endfor %}
   </div>
 </section>

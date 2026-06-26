@@ -86,8 +86,20 @@ body.sticky-bottom-footer {
 .about-card {
   border: 1.5px solid rgba(126, 87, 194, 0.5) !important;
   border-radius: 0.5rem !important;
-  background: var(--global-card-bg-color);
+  background:
+    linear-gradient(135deg, rgba(126, 87, 194, 0.05), rgba(185, 145, 74, 0.035)),
+    var(--global-card-bg-color);
   box-shadow: 0 0.15rem 0.75rem rgba(126, 87, 194, 0.08);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.about-card:hover {
+  border-color: rgba(126, 87, 194, 0.72) !important;
+  box-shadow: 0 0.45rem 1.2rem rgba(126, 87, 194, 0.13);
+  transform: translateY(-2px);
 }
 
 .about-card__title {
@@ -133,20 +145,147 @@ body.sticky-bottom-footer {
 }
 
 .about-list__item time {
-  color: var(--global-text-color-light);
   white-space: nowrap;
 }
 
 .about-service p {
-  margin: 0.8rem 0;
+  margin: 0.9rem 0;
+  line-height: 1.55;
 }
 
-.about-service strong {
-  color: var(--global-text-color);
+.about-chip {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.about-chip--year {
+  padding: 0.32rem 0.7rem;
+  color: #fff;
+  background: linear-gradient(135deg, #7e57c2, #b9914a);
+}
+
+.about-chip--service {
+  margin-right: 0.4rem;
+  padding: 0.3rem 0.62rem;
+  color: #5e3ea1;
+  background: rgba(126, 87, 194, 0.14);
+  border: 1px solid rgba(126, 87, 194, 0.22);
 }
 
 .about-card--publications .publications {
   margin-top: 0.25rem;
+}
+
+.about-card--publications .bibliography li,
+.about-card--publications .publication {
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.about-card--publications .bibliography li:hover,
+.about-card--publications .publication:hover {
+  background-color: rgba(126, 87, 194, 0.045);
+  transform: translateX(3px);
+}
+
+.news-timeline-wrap {
+  padding: 0.15rem 0.35rem 0.15rem 0;
+  scrollbar-color: rgba(126, 87, 194, 0.5) transparent;
+}
+
+.news-timeline {
+  position: relative;
+  margin: 0;
+  padding: 0.2rem 0 0.2rem 1.55rem;
+  list-style: none;
+}
+
+.news-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.38rem;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #7e57c2, rgba(185, 145, 74, 0.7));
+}
+
+.news-timeline__item {
+  position: relative;
+  padding: 0.2rem 0 1rem 0.75rem;
+}
+
+.news-timeline__item::before {
+  content: "";
+  position: absolute;
+  top: 0.55rem;
+  left: -1.28rem;
+  width: 0.72rem;
+  height: 0.72rem;
+  border: 2px solid #7e57c2;
+  border-radius: 50%;
+  background: var(--global-card-bg-color);
+  box-shadow: 0 0 0 0.22rem rgba(126, 87, 194, 0.12);
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.news-timeline__item:first-child::before {
+  background: #7e57c2;
+}
+
+.news-timeline__item:hover::before {
+  background: #b9914a;
+  transform: scale(1.12);
+}
+
+.news-timeline__date {
+  display: inline-flex;
+  margin-bottom: 0.25rem;
+  padding: 0.25rem 0.52rem;
+  border-radius: 999px;
+  color: #5e3ea1;
+  background: rgba(126, 87, 194, 0.12);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.news-timeline__content {
+  color: var(--global-text-color-light);
+  line-height: 1.55;
+}
+
+.news-timeline__content a {
+  color: var(--global-text-color);
+}
+
+.news-timeline__content a:hover {
+  color: var(--global-theme-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-card,
+  .about-card--publications .bibliography li,
+  .about-card--publications .publication,
+  .news-timeline__item::before {
+    transition: none;
+  }
+
+  .about-card:hover,
+  .about-card--publications .bibliography li:hover,
+  .about-card--publications .publication:hover {
+    transform: none;
+  }
 }
 
 @media (max-width: 576px) {
@@ -166,6 +305,10 @@ body.sticky-bottom-footer {
   .about-list__item {
     grid-template-columns: 1fr;
     gap: 0.25rem;
+  }
+
+  .news-timeline {
+    padding-left: 1.35rem;
   }
 }
 
