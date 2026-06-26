@@ -2,12 +2,12 @@
   {% if site.news != blank %}
     {% assign news_size = site.news | size %}
     <div
-      class="news-timeline-wrap"
+      class="about-cv-scroll"
       {% if include.limit and page.announcements.scrollable and news_size > 3 %}
         style="max-height: {{ page.announcements.limit | default: 5 | times: 5 }}rem; overflow-y: auto;"
       {% endif %}
     >
-      <ol class="news-timeline">
+      <ul class="card-text font-weight-light list-group list-group-flush about-cv-list">
       {% assign news = site.news | reverse %}
       {% if include.limit and page.announcements.limit and page.announcements.scrollable != true %}
         {% assign news_limit = page.announcements.limit %}
@@ -15,9 +15,11 @@
         {% assign news_limit = news_size %}
       {% endif %}
       {% for item in news limit: news_limit %}
-        <li class="news-timeline__item">
-          <time class="news-timeline__date">{{ item.date | date: '%b %d, %Y' }}</time>
-          <div class="news-timeline__content">
+        <li class="list-group-item about-cv-row">
+          <div class="about-cv-date">
+            <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle">{{ item.date | date: '%b %Y' }}</span>
+          </div>
+          <div class="about-cv-content">
             {% if item.inline %}
               {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
             {% else %}
@@ -26,7 +28,7 @@
           </div>
         </li>
       {% endfor %}
-      </ol>
+      </ul>
     </div>
   {% else %}
     <p>No news so far...</p>
