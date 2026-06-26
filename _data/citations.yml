@@ -5,4 +5,26 @@ metadata:
   total_citations: 483
   h_index: 9
   i10_index: 9
+  sparkline_points: "8.0,62.0 31.4,62.0 54.9,61.5 78.3,61.1 101.7,56.8 125.1,49.2 148.6,10.0 172.0,27.6"
+  sparkline_area_points: "8,62 8.0,62.0 31.4,62.0 54.9,61.5 78.3,61.1 101.7,56.8 125.1,49.2 148.6,10.0 172.0,27.6 172,62"
+  sparkline_label: "2019-2026"
+  sparkline_min: 2
+  sparkline_max: 230
+citation_years:
+  - year: 2019
+    citations: 2
+  - year: 2020
+    citations: 2
+  - year: 2021
+    citations: 4
+  - year: 2022
+    citations: 6
+  - year: 2023
+    citations: 25
+  - year: 2024
+    citations: 58
+  - year: 2025
+    citations: 230
+  - year: 2026
+    citations: 153
 papers: {}
