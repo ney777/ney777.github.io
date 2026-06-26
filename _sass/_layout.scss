@@ -84,8 +84,8 @@ body.sticky-bottom-footer {
 }
 
 .about-card {
-  margin: 1.5rem 0;
-  padding: 1.35rem 1.5rem;
+  margin: 1.75rem 0;
+  padding: 1.55rem 1.75rem;
   border: 1px solid var(--global-divider-color);
   border-radius: 0.5rem;
   background: var(--global-card-bg-color);
@@ -95,25 +95,33 @@ body.sticky-bottom-footer {
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  margin: 0 0 1rem;
-  font-size: 1.35rem;
+  margin: 0 0 1.15rem;
+  color: var(--global-text-color);
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 
 .about-card__title i {
   color: #b9914a;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .about-list__item {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 1rem;
-  padding: 0.75rem 0;
+  padding: 0.65rem 0;
   border-bottom: 1px solid var(--global-divider-color);
 }
 
 .about-list__item:last-child {
   border-bottom: 0;
+}
+
+.about-list__item span,
+.about-service p {
+  color: var(--global-text-color-light);
+  font-size: 1.05rem;
 }
 
 .about-list__item time {
@@ -122,7 +130,7 @@ body.sticky-bottom-footer {
 }
 
 .about-service p {
-  margin: 0.65rem 0;
+  margin: 0.8rem 0;
 }
 
 .about-service strong {
