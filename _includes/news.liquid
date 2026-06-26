@@ -17,7 +17,7 @@
       {% for item in news limit: news_limit %}
         <li class="list-group-item about-cv-row">
           <div class="about-cv-date">
-            <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle">{{ item.date | date: '%b %Y' }}</span>
+            <span class="about-badge">{{ item.date | date: '%b %Y' }}</span>
           </div>
           <div class="about-cv-content">
             {% if item.inline %}

@@ -47,24 +47,6 @@
       {% endif %}
     </strong>
   </div>
-  <div class="scholar-stats__trend">
-    <div class="scholar-stats__trend-header">
-      <span class="scholar-stats__label">Citation trend</span>
-      <span class="scholar-stats__trend-range">{{ citation_metadata.sparkline_label | default: '' }}</span>
-    </div>
-    {% if citation_data_valid and citation_metadata.sparkline_points %}
-      <svg class="scholar-stats__sparkline" viewBox="0 0 180 72" role="img" aria-label="Google Scholar citation growth curve">
-        <polygon class="scholar-stats__sparkline-area" points="{{ citation_metadata.sparkline_area_points }}"></polygon>
-        <polyline class="scholar-stats__sparkline-line" points="{{ citation_metadata.sparkline_points }}"></polyline>
-      </svg>
-      <div class="scholar-stats__trend-scale">
-        <span>{{ citation_metadata.sparkline_min }}</span>
-        <span>{{ citation_metadata.sparkline_max }}</span>
-      </div>
-    {% else %}
-      <div class="scholar-stats__sparkline scholar-stats__sparkline--empty">Sync pending</div>
-    {% endif %}
-  </div>
   <div class="scholar-stats__meta">
     {% if citation_data_valid %}
       Updated daily. Last synced {{ citation_metadata.last_updated | date: '%b %d, %Y' }}.

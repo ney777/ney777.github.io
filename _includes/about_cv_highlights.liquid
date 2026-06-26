@@ -9,7 +9,7 @@
     {% for award in cv_sections.Awards %}
       <li class="list-group-item about-cv-row">
         <div class="about-cv-date">
-          <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle">{{ award.date }}</span>
+          <span class="about-badge">{{ award.date }}</span>
         </div>
         <h6 class="about-cv-content title font-weight-bold">{{ award.title }}</h6>
       </li>
@@ -26,7 +26,7 @@
     {% for service in page.about_cv.academic_service %}
       <li class="list-group-item about-cv-row">
         <div class="about-cv-date">
-          <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle">service</span>
+          <span class="about-badge">service</span>
         </div>
         <div class="about-cv-content">
           <strong>{{ service.role }}:</strong> {{ service.text }}

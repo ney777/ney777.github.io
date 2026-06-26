@@ -42,7 +42,7 @@ body.sticky-bottom-footer {
 
 .scholar-stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(12rem, 1.55fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.75rem;
   margin: 0.5rem 0 1.75rem;
   padding: 1rem;
@@ -53,56 +53,6 @@ body.sticky-bottom-footer {
 
 .scholar-stats__metric {
   min-width: 0;
-}
-
-.scholar-stats__trend {
-  min-width: 0;
-  padding-left: 0.25rem;
-}
-
-.scholar-stats__trend-header,
-.scholar-stats__trend-scale {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-}
-
-.scholar-stats__trend-range,
-.scholar-stats__trend-scale {
-  color: var(--global-text-color-light);
-  font-size: 0.75rem;
-}
-
-.scholar-stats__sparkline {
-  display: block;
-  width: 100%;
-  height: 4.5rem;
-  margin-top: 0.15rem;
-  overflow: visible;
-}
-
-.scholar-stats__sparkline-area {
-  fill: rgba(188, 0, 188, 0.13);
-}
-
-.scholar-stats__sparkline-line {
-  fill: none;
-  stroke: #bc00bc;
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0.2rem 0.25rem rgba(188, 0, 188, 0.18));
-}
-
-.scholar-stats__sparkline--empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px dashed var(--global-divider-color);
-  border-radius: 0.25rem;
-  color: var(--global-text-color-light);
-  font-size: 0.8rem;
 }
 
 .scholar-stats__label {
@@ -214,12 +164,20 @@ body.sticky-bottom-footer {
   text-align: center;
 }
 
-.about-cv-date .badge {
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 75px;
+  padding: 0.2rem 0.65rem;
   color: #fff !important;
   background: linear-gradient(180deg, #d000c8 0%, #b000b8 100%) !important;
   border-radius: 0.125rem;
   box-shadow: 0 0.25rem 0.45rem rgba(188, 0, 188, 0.28);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .about-cv-content {

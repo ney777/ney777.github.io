@@ -80,29 +80,11 @@ def fetch_profile_metrics() -> dict:
     if "citations" not in metrics:
         raise RuntimeError("Could not parse citation metrics from the Google Scholar profile page.")
 
-    years = [
-        int(year)
-        for year in re.findall(r'<span class="gsc_g_t"[^>]*>(\d{4})</span>', html)
-    ]
-    yearly_citations = [
-        parse_int(value)
-        for value in re.findall(
-            r'<a href="javascript:void\(0\)" class="gsc_g_a"[^>]*>.*?<span class="gsc_g_al">([\d,]+)</span>',
-            html,
-            re.S,
-        )
-    ]
-    citation_years = [
-        {"year": year, "citations": citations}
-        for year, citations in zip(years, yearly_citations)
-    ]
-
     return {
         "profile_name": profile_name,
         "total_citations": metrics.get("citations", 0),
         "h_index": metrics.get("h-index", 0),
         "i10_index": metrics.get("i10-index", 0),
-        "citation_years": citation_years,
     }
 
 
@@ -119,7 +101,7 @@ def load_existing_metadata() -> dict:
         return {}
 
     metadata = {}
-    for key in ("last_updated", "scholar_userid", "sparkline_points"):
+    for key in ("last_updated", "scholar_userid"):
         match = re.search(rf"^\s*{key}:\s*['\"]?([^'\"\n]+)", content, re.M)
         if match:
             metadata[key] = match.group(1).strip()
@@ -132,70 +114,21 @@ def quote_yaml(value: str) -> str:
     return f'"{escaped}"'
 
 
-def build_sparkline(citation_years: list[dict]) -> dict:
-    """Build compact SVG point strings for the citation history curve."""
-    if not citation_years:
-        return {
-            "points": "",
-            "area_points": "",
-            "label": "",
-            "min": 0,
-            "max": 0,
-        }
-
-    width = 180
-    height = 72
-    padding_x = 8
-    padding_y = 10
-    baseline = height - padding_y
-    values = [entry["citations"] for entry in citation_years]
-    min_value = min(values)
-    max_value = max(values)
-    denominator = max(max_value - min_value, 1)
-    step = 0 if len(values) == 1 else (width - padding_x * 2) / (len(values) - 1)
-
-    points = []
-    for index, value in enumerate(values):
-        x = padding_x + step * index
-        y = baseline - ((value - min_value) / denominator) * (height - padding_y * 2)
-        points.append(f"{x:.1f},{y:.1f}")
-
-    return {
-        "points": " ".join(points),
-        "area_points": f"{padding_x},{baseline} {' '.join(points)} {width - padding_x},{baseline}",
-        "label": f"{citation_years[0]['year']}-{citation_years[-1]['year']}",
-        "min": min_value,
-        "max": max_value,
-    }
-
-
 def render_citation_data(metrics: dict, today: str) -> str:
     """Render citation metrics as the _data/citations.yml file."""
-    sparkline = build_sparkline(metrics["citation_years"])
-    lines = [
-        "metadata:",
-        f"  last_updated: {quote_yaml(today)}",
-        f"  scholar_userid: {quote_yaml(SCHOLAR_USER_ID)}",
-        f"  profile_name: {quote_yaml(metrics['profile_name'])}",
-        f"  total_citations: {metrics['total_citations']}",
-        f"  h_index: {metrics['h_index']}",
-        f"  i10_index: {metrics['i10_index']}",
-        f"  sparkline_points: {quote_yaml(sparkline['points'])}",
-        f"  sparkline_area_points: {quote_yaml(sparkline['area_points'])}",
-        f"  sparkline_label: {quote_yaml(sparkline['label'])}",
-        f"  sparkline_min: {sparkline['min']}",
-        f"  sparkline_max: {sparkline['max']}",
-        "citation_years:",
-    ]
-    for entry in metrics["citation_years"]:
-        lines.extend(
-            [
-                f"  - year: {entry['year']}",
-                f"    citations: {entry['citations']}",
-            ]
-        )
-    lines.extend(["papers: {}", ""])
-    return "\n".join(lines)
+    return "\n".join(
+        [
+            "metadata:",
+            f"  last_updated: {quote_yaml(today)}",
+            f"  scholar_userid: {quote_yaml(SCHOLAR_USER_ID)}",
+            f"  profile_name: {quote_yaml(metrics['profile_name'])}",
+            f"  total_citations: {metrics['total_citations']}",
+            f"  h_index: {metrics['h_index']}",
+            f"  i10_index: {metrics['i10_index']}",
+            "papers: {}",
+            "",
+        ]
+    )
 
 
 def get_scholar_citations() -> None:
@@ -210,7 +143,6 @@ def get_scholar_citations() -> None:
         if (
             existing_metadata["last_updated"] == today
             and existing_metadata.get("scholar_userid") == SCHOLAR_USER_ID
-            and existing_metadata.get("sparkline_points")
         ):
             print("Citations data is already up-to-date. Skipping fetch.")
             return
@@ -238,11 +170,7 @@ def get_scholar_citations() -> None:
                 print("No changes in citation data. Skipping file update.")
                 return
 
-    if (
-        existing_metadata.get("last_updated") == today
-        and existing_metadata.get("scholar_userid") == SCHOLAR_USER_ID
-        and existing_metadata.get("sparkline_points")
-    ):
+    if existing_metadata.get("last_updated") == today and existing_metadata.get("scholar_userid") == SCHOLAR_USER_ID:
         print("No changes in citation data. Skipping file update.")
         return
 
