@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
 import os
+import re
 import sys
-import yaml
 from datetime import datetime
-from scholarly import scholarly
+from html import unescape
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
 
 
 def load_scholar_user_id() -> str:
@@ -15,121 +17,166 @@ def load_scholar_user_id() -> str:
             f"Configuration file {config_file} not found. Please ensure the file exists and contains your Google Scholar user ID."
         )
         sys.exit(1)
-    try:
-        with open(config_file, "r") as f:
-            config = yaml.safe_load(f)
-        scholar_user_id = config.get("scholar_userid")
-        if not scholar_user_id:
-            print(
-                "No 'scholar_userid' found in the configuration file. Please add 'scholar_userid' to _data/socials.yml."
-            )
-            sys.exit(1)
-        return scholar_user_id
-    except yaml.YAMLError as e:
+
+    with open(config_file, "r", encoding="utf-8") as f:
+        config_content = f.read()
+
+    match = re.search(r"^scholar_userid:\s*([^#\n]+)", config_content, re.M)
+    scholar_user_id = match.group(1).strip().strip("'\"") if match else ""
+    if not scholar_user_id:
         print(
-            f"Error parsing YAML file {config_file}: {e}. Please check the file for correct YAML syntax."
+            "No 'scholar_userid' found in the configuration file. Please add 'scholar_userid' to _data/socials.yml."
         )
         sys.exit(1)
+    return scholar_user_id
 
 
 SCHOLAR_USER_ID: str = load_scholar_user_id()
 OUTPUT_FILE: str = "_data/citations.yml"
+SCHOLAR_URL: str = "https://scholar.google.com/citations"
+
+
+def strip_tags(value: str) -> str:
+    """Remove HTML tags from a short Google Scholar table value."""
+    return unescape(re.sub(r"<[^>]+>", "", value)).strip()
+
+
+def parse_int(value: str) -> int:
+    """Parse citation metrics that may include commas or non-breaking spaces."""
+    digits = re.sub(r"[^\d]", "", value)
+    return int(digits) if digits else 0
+
+
+def fetch_profile_metrics() -> dict:
+    """Fetch high-level citation metrics from the public Google Scholar profile page."""
+    params = urlencode({"user": SCHOLAR_USER_ID, "hl": "en"})
+    request = Request(
+        f"{SCHOLAR_URL}?{params}",
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/125.0 Safari/537.36"
+            )
+        },
+    )
+
+    with urlopen(request, timeout=25) as response:
+        html = response.read().decode("utf-8", errors="replace")
+
+    name_match = re.search(r'<div id="gsc_prf_in">(.*?)</div>', html, re.S)
+    profile_name = strip_tags(name_match.group(1)) if name_match else ""
+
+    metrics = {}
+    rows = re.findall(
+        r'<tr>\s*<td class="gsc_rsb_sc1"[^>]*>(.*?)</td>\s*<td class="gsc_rsb_std"[^>]*>(.*?)</td>',
+        html,
+        re.S,
+    )
+    for label_html, value_html in rows:
+        label = strip_tags(label_html).lower()
+        metrics[label] = parse_int(strip_tags(value_html))
+
+    if "citations" not in metrics:
+        raise RuntimeError("Could not parse citation metrics from the Google Scholar profile page.")
+
+    return {
+        "profile_name": profile_name,
+        "total_citations": metrics.get("citations", 0),
+        "h_index": metrics.get("h-index", 0),
+        "i10_index": metrics.get("i10-index", 0),
+    }
+
+
+def load_existing_metadata() -> dict:
+    """Read the small metadata block from _data/citations.yml without external dependencies."""
+    if not os.path.exists(OUTPUT_FILE):
+        return {}
+
+    try:
+        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+            content = f.read()
+    except Exception as e:
+        print(f"Warning: Could not read existing citation data from {OUTPUT_FILE}: {e}.")
+        return {}
+
+    metadata = {}
+    for key in ("last_updated", "scholar_userid"):
+        match = re.search(rf"^\s*{key}:\s*['\"]?([^'\"\n]+)", content, re.M)
+        if match:
+            metadata[key] = match.group(1).strip()
+    return metadata
+
+
+def quote_yaml(value: str) -> str:
+    """Quote a short string for the generated YAML file."""
+    escaped = value.replace("\\", "\\\\").replace('"', '\\"')
+    return f'"{escaped}"'
+
+
+def render_citation_data(metrics: dict, today: str) -> str:
+    """Render citation metrics as the _data/citations.yml file."""
+    return "\n".join(
+        [
+            "metadata:",
+            f"  last_updated: {quote_yaml(today)}",
+            f"  scholar_userid: {quote_yaml(SCHOLAR_USER_ID)}",
+            f"  profile_name: {quote_yaml(metrics['profile_name'])}",
+            f"  total_citations: {metrics['total_citations']}",
+            f"  h_index: {metrics['h_index']}",
+            f"  i10_index: {metrics['i10_index']}",
+            "papers: {}",
+            "",
+        ]
+    )
 
 
 def get_scholar_citations() -> None:
     """Fetch and update Google Scholar citation data."""
     print(f"Fetching citations for Google Scholar ID: {SCHOLAR_USER_ID}")
     today = datetime.now().strftime("%Y-%m-%d")
-    existing_data = None
+    existing_metadata = load_existing_metadata()
 
     # Check if the output file was already updated today
-    if os.path.exists(OUTPUT_FILE):
-        try:
-            with open(OUTPUT_FILE, "r") as f:
-                existing_data = yaml.safe_load(f)
-            if (
-                existing_data
-                and "metadata" in existing_data
-                and "last_updated" in existing_data["metadata"]
-            ):
-                print(f"Last updated on: {existing_data['metadata']['last_updated']}")
-                if (
-                    existing_data["metadata"]["last_updated"] == today
-                    and existing_data["metadata"].get("scholar_userid") == SCHOLAR_USER_ID
-                ):
-                    print("Citations data is already up-to-date. Skipping fetch.")
-                    return
-        except Exception as e:
-            print(
-                f"Warning: Could not read existing citation data from {OUTPUT_FILE}: {e}. The file may be missing or corrupted."
-            )
+    if existing_metadata.get("last_updated"):
+        print(f"Last updated on: {existing_metadata['last_updated']}")
+        if (
+            existing_metadata["last_updated"] == today
+            and existing_metadata.get("scholar_userid") == SCHOLAR_USER_ID
+        ):
+            print("Citations data is already up-to-date. Skipping fetch.")
+            return
 
-    scholarly.set_timeout(15)
-    scholarly.set_retries(3)
     try:
-        author = scholarly.search_author_id(SCHOLAR_USER_ID)
-        author_data = scholarly.fill(author)
+        scholar_metrics = fetch_profile_metrics()
     except Exception as e:
         print(
             f"Error fetching author data from Google Scholar for user ID '{SCHOLAR_USER_ID}': {e}. Please check your internet connection and Scholar user ID."
         )
         sys.exit(1)
 
-    if not author_data:
-        print(
-            f"Could not fetch author data for user ID '{SCHOLAR_USER_ID}'. Please verify the Scholar user ID and try again."
-        )
-        sys.exit(1)
-
-    if "publications" not in author_data:
-        print(f"No publications found in author data for user ID '{SCHOLAR_USER_ID}'.")
-        sys.exit(1)
-
-    citation_data = {
-        "metadata": {
-            "last_updated": today,
-            "scholar_userid": SCHOLAR_USER_ID,
-            "profile_name": author_data.get("name", ""),
-            "total_citations": int(author_data.get("citedby", 0) or 0),
-            "h_index": int(author_data.get("hindex", 0) or 0),
-            "i10_index": int(author_data.get("i10index", 0) or 0),
-        },
-        "papers": {},
-    }
-
-    for pub in author_data["publications"]:
-        try:
-            pub_id = pub.get("pub_id") or pub.get("author_pub_id")
-            if not pub_id:
-                print(
-                    f"Warning: No ID found for publication: {pub.get('bib', {}).get('title', 'Unknown')}. This publication will be skipped."
-                )
-                continue
-
-            title = pub.get("bib", {}).get("title", "Unknown Title")
-            year = pub.get("bib", {}).get("pub_year", "Unknown Year")
-            citations = pub.get("num_citations", 0)
-
-            print(f"Found: {title} ({year}) - Citations: {citations}")
-
-            citation_data["papers"][pub_id] = {
-                "title": title,
-                "year": year,
-                "citations": citations,
-            }
-        except Exception as e:
-            print(
-                f"Error processing publication '{pub.get('bib', {}).get('title', 'Unknown')}': {e}. This publication will be skipped."
-            )
+    print(
+        "Found profile metrics: "
+        f"citations={scholar_metrics['total_citations']}, "
+        f"h-index={scholar_metrics['h_index']}, "
+        f"i10-index={scholar_metrics['i10_index']}"
+    )
 
     # Compare new data with existing data
-    if existing_data == citation_data:
+    rendered_data = render_citation_data(scholar_metrics, today)
+    if os.path.exists(OUTPUT_FILE):
+        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+            if f.read() == rendered_data:
+                print("No changes in citation data. Skipping file update.")
+                return
+
+    if existing_metadata.get("last_updated") == today and existing_metadata.get("scholar_userid") == SCHOLAR_USER_ID:
         print("No changes in citation data. Skipping file update.")
         return
 
     try:
-        with open(OUTPUT_FILE, "w") as f:
-            yaml.dump(citation_data, f, width=1000, sort_keys=False)
+        with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+            f.write(rendered_data)
         print(f"Citation data saved to {OUTPUT_FILE}")
     except Exception as e:
         print(

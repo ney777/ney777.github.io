@@ -31,9 +31,9 @@
     <span class="scholar-stats__label">h-index</span>
     <strong class="scholar-stats__value">
       {% if citation_data_valid %}
-        {{ citation_metadata.h_index | default: '—' }}
+        {{ citation_metadata.h_index | default: '-' }}
       {% else %}
-        —
+        -
       {% endif %}
     </strong>
   </div>
@@ -41,9 +41,9 @@
     <span class="scholar-stats__label">i10-index</span>
     <strong class="scholar-stats__value">
       {% if citation_data_valid %}
-        {{ citation_metadata.i10_index | default: '—' }}
+        {{ citation_metadata.i10_index | default: '-' }}
       {% else %}
-        —
+        -
       {% endif %}
     </strong>
   </div>
