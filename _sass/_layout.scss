@@ -86,16 +86,29 @@ body.sticky-bottom-footer {
 .about-card {
   margin: 1.75rem 0;
   padding: 1.55rem 1.75rem;
-  border: 1px solid var(--global-divider-color);
+  border: 1.5px solid rgba(126, 87, 194, 0.42);
   border-radius: 0.5rem;
-  background: var(--global-card-bg-color);
+  background:
+    linear-gradient(180deg, rgba(126, 87, 194, 0.055), rgba(126, 87, 194, 0.015)),
+    var(--global-card-bg-color);
+  box-shadow: 0 0.2rem 0.8rem rgba(126, 87, 194, 0.08);
 }
 
 .about-card__title {
   margin: 0 0 1.15rem;
   color: var(--global-text-color);
-  font-size: 1.3rem;
-  font-weight: 500;
+  font-size: 1.28rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.about-card__title a {
+  color: inherit;
+}
+
+.about-card__title a:hover {
+  color: var(--global-theme-color);
+  text-decoration: none;
 }
 
 .about-list__item {
@@ -127,6 +140,10 @@ body.sticky-bottom-footer {
 
 .about-service strong {
   color: var(--global-text-color);
+}
+
+.about-card--publications .publications {
+  margin-top: 0.25rem;
 }
 
 @media (max-width: 576px) {
