@@ -20,6 +20,16 @@ social: true # includes social icons at the bottom of the page
 scholar_stats:
   enabled: true
 
+about_cv:
+  enabled: true
+  academic_service:
+    - role: Journal Reviewer
+      text: IEEE TKDE, IEEE TMC, IEEE TNNLS
+    - role: Conference Reviewer / Program Committee
+      text: AAAI, IJCAI, ICME; AAAI-26 and AAAI 2026 AI Alignment Track
+    - role: Standards Contribution
+      text: IEEE P2894, IEEE P2961, and IEEE P2807.6
+
 announcements:
   enabled: true # includes a list of news items
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items

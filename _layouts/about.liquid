@@ -48,6 +48,11 @@ layout: default
       {% include scholar_stats.liquid %}
     {% endif %}
 
+    <!-- CV highlights -->
+    {% if page.about_cv and page.about_cv.enabled %}
+      {% include about_cv_highlights.liquid %}
+    {% endif %}
+
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>

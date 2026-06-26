@@ -83,6 +83,52 @@ body.sticky-bottom-footer {
   white-space: nowrap;
 }
 
+.about-card {
+  margin: 1.5rem 0;
+  padding: 1.35rem 1.5rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0.5rem;
+  background: var(--global-card-bg-color);
+}
+
+.about-card__title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+}
+
+.about-card__title i {
+  color: #b9914a;
+  font-size: 1rem;
+}
+
+.about-list__item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.about-list__item:last-child {
+  border-bottom: 0;
+}
+
+.about-list__item time {
+  color: var(--global-text-color-light);
+  white-space: nowrap;
+}
+
+.about-service p {
+  margin: 0.65rem 0;
+}
+
+.about-service strong {
+  color: var(--global-text-color);
+}
+
 @media (max-width: 576px) {
   .scholar-stats {
     grid-template-columns: 1fr;
@@ -91,6 +137,15 @@ body.sticky-bottom-footer {
   .scholar-stats__meta a {
     display: inline-block;
     margin-left: 0;
+  }
+
+  .about-card {
+    padding: 1.1rem;
+  }
+
+  .about-list__item {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
   }
 }
 
