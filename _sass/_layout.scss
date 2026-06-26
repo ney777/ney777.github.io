@@ -91,10 +91,18 @@ body.sticky-bottom-footer {
 }
 
 .about-card__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-bottom: 1rem;
   color: var(--global-text-color);
   font-size: 1.25rem;
   line-height: 1.35;
+}
+
+.about-card__title i {
+  color: #b9914a;
+  font-size: 0.95rem;
 }
 
 .about-card__title a {

@@ -73,6 +73,7 @@ layout: default
     {% if page.selected_papers %}
       <section class="card mt-3 p-3 about-card about-card--publications">
         <h3 class="card-title font-weight-medium about-card__title">
+          <i class="fa-solid fa-book-open" aria-hidden="true"></i>
           <a href="{{ '/publications/' | relative_url }}">selected publications</a>
         </h3>
         {% include selected_papers.liquid %}

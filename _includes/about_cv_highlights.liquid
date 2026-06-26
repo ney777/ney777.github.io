@@ -1,7 +1,10 @@
 {% assign cv_sections = site.data.cv.cv.sections %}
 
 <section class="card mt-3 p-3 about-card about-card--cv">
-  <h3 class="card-title font-weight-medium about-card__title">honors &amp; awards</h3>
+  <h3 class="card-title font-weight-medium about-card__title">
+    <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+    <span>honors &amp; awards</span>
+  </h3>
   <div class="about-list">
     {% for award in cv_sections.Awards %}
       <div class="about-list__item">
@@ -13,7 +16,10 @@
 </section>
 
 <section class="card mt-3 p-3 about-card about-card--cv">
-  <h3 class="card-title font-weight-medium about-card__title">academic service</h3>
+  <h3 class="card-title font-weight-medium about-card__title">
+    <i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>
+    <span>academic service</span>
+  </h3>
   <div class="about-service">
     {% for service in page.about_cv.academic_service %}
       <p><strong>{{ service.role }}:</strong> {{ service.text }}</p>
