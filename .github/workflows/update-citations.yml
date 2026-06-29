@@ -2,8 +2,17 @@ name: Update Google Scholar Citations
 
 on:
   schedule:
-    - cron: "17 0 * * *" # daily around 08:17 Beijing time
+    # GitHub may delay or drop individual scheduled runs. These staggered
+    # attempts give the daily refresh several chances; the script exits early
+    # after the first successful update of the day.
+    - cron: "17 0 * * *" # 08:17 Beijing time
+    - cron: "41 3 * * *" # 11:41 Beijing time
+    - cron: "23 8 * * *" # 16:23 Beijing time
+    - cron: "49 14 * * *" # 22:49 Beijing time
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update-citations:
@@ -20,12 +29,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-
-      - name: Install dependencies
-        run: |
-          echo "🔧 Installing dependencies..."
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
 
       - name: Save current citations.yml hash
         id: before
