@@ -45,6 +45,10 @@ I will soon join the PolyU Academy for Artificial Intelligence (PAAI) as a Postd
 
 I am a researcher in computer science at the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS). I received my Ph.D. in computer science in 2025, advised by Prof. [Yiqiang Chen](https://english.ict.cas.cn/people/scien/bln/202303/t20230321_328591.html) ([Google Scholar](https://scholar.google.com/citations?user=LC3SwhEAAAAJ&hl=zh-CN)) at ICT, CAS. My research focuses on federated learning, trustworthy AI, privacy-preserving model fusion, and collaborative foundation-model systems for medical and healthcare applications.
 
+## research vision
+
+My long-term goal is to build **trustworthy collaborative AI systems** that enable heterogeneous models and institutions to work together without centralizing sensitive data. I am particularly interested in how models can be **safely fused, routed, and coordinated** under privacy, fairness, robustness, and resource constraints. Beyond improving predictive performance, I aim to develop collaborative foundation-model and multi-agent systems that are **interpretable, adaptable, and deployable** in real-world healthcare and other distributed intelligent applications.
+
 {% comment %}
 My work studies how heterogeneous institutions, models, and data sources can collaborate without direct data sharing. I am especially interested in pre-trained model fusion and merging, decentralized federated graph matching, federated transfer learning, and trustworthy global healthcare AI under privacy, fairness, and robustness constraints.
 
