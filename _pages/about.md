@@ -43,7 +43,7 @@ latest_posts:
 
 I will soon join the PolyU Academy for Artificial Intelligence (PAAI) as a Postdoctoral Fellow, working with Prof. [Qiang Yang](https://www.polyu.edu.hk/dsai/people/academic-staff/yang-qiang/) and Prof. [Yang Liu](https://www.polyu.edu.hk/dsai/people/academic-staff/liu-yang/).
 
-I am currently a researcher at the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS).
+I am currently a researcher at the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS). I received my Ph.D. in computer science in 2025, advised by Prof. [Yiqiang Chen](https://english.ict.cas.cn/people/scien/bln/202303/t20230321_328591.html) ([Google Scholar](https://scholar.google.com/citations?user=LC3SwhEAAAAJ&hl=zh-CN)) at ICT, CAS. My research focuses on federated learning, trustworthy AI, privacy-preserving model fusion, and collaborative foundation-model systems for medical and healthcare applications.
 
 ## research vision
 
