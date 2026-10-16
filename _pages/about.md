@@ -41,7 +41,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am currently a researcher at the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS). I received my Ph.D. in computer science in 2025, advised by Prof. [Yiqiang Chen](https://english.ict.cas.cn/people/scien/bln/202303/t20230321_328591.html) ([Google Scholar](https://scholar.google.com/citations?user=LC3SwhEAAAAJ&hl=zh-CN)) at ICT, CAS. My research focuses on federated learning, trustworthy AI, privacy-preserving model fusion, and collaborative foundation-model systems for medical and healthcare applications.
+I am currently an Assistant Researcher at the Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS). I received my Ph.D. in computer science in 2025, advised by Prof. [Yiqiang Chen](https://english.ict.cas.cn/people/scien/bln/202303/t20230321_328591.html) ([Google Scholar](https://scholar.google.com/citations?user=LC3SwhEAAAAJ&hl=zh-CN)) at ICT, CAS. My research focuses on federated learning, trustworthy AI, privacy-preserving model fusion, and collaborative foundation-model systems for medical and healthcare applications.
 
 ## research vision
 
