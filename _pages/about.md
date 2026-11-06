@@ -26,7 +26,7 @@ about_cv:
     - role: Journal Reviewer
       text: IEEE TKDE, IEEE TMC, IEEE TNNLS
     - role: Conference Reviewer / Program Committee
-      text: AAAI, IJCAI, ICME; AAAI-26 and AAAI 2026 AI Alignment Track
+      text: AAAI 2027, WWW 2027
     - role: Standards Contribution
       text: IEEE P2894, IEEE P2961, and IEEE P2807.6
 
