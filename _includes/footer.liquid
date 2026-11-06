@@ -13,8 +13,11 @@
 
 {% if site.footer_fixed %}
   <footer class="fixed-bottom" role="contentinfo">
-    <div class="container mt-0">
-      {{ footer_contents }}
+    <div class="container mt-0 footer-content">
+      <span class="footer-copyright">{{ footer_contents }}</span>
+      {% if site.enable_visitor_counter %}
+        {% include visitor_stats.liquid %}
+      {% endif %}
     </div>
   </footer>
 {% else %}
@@ -23,8 +26,11 @@
       {% include newsletter.liquid %}
     {% endif %}
 
-    <div class="container">
-      {{ footer_contents }}
+    <div class="container footer-content">
+      <span class="footer-copyright">{{ footer_contents }}</span>
+      {% if site.enable_visitor_counter %}
+        {% include visitor_stats.liquid %}
+      {% endif %}
     </div>
   </footer>
 {% endif %}

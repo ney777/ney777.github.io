@@ -20,9 +20,6 @@ social: true # includes social icons at the bottom of the page
 scholar_stats:
   enabled: true
 
-visitor_stats:
-  enabled: true
-
 about_cv:
   enabled: true
   academic_service:

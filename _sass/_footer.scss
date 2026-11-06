@@ -10,7 +10,6 @@ footer.fixed-bottom {
     color: var(--global-footer-text-color);
     padding-top: 9px;
     padding-bottom: 8px;
-    text-align: center;
   }
 
   a {
@@ -30,6 +29,51 @@ footer.sticky-bottom {
   font-size: 0.9rem;
 
   .container {
+    color: var(--global-footer-text-color);
+  }
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer-copyright {
+  min-width: 0;
+  text-align: left;
+}
+
+.footer-visitor-stats {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--global-footer-text-color);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.footer-visitor-stats strong {
+  color: var(--global-theme-color);
+  font-weight: 600;
+}
+
+.footer-visitor-stats__divider {
+  margin: 0 0.35rem;
+  color: var(--global-footer-text-color);
+}
+
+@media (max-width: 576px) {
+  .footer-content {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.15rem;
+  }
+
+  .footer-copyright,
+  .footer-visitor-stats {
+    width: 100%;
+    margin-left: 0;
     text-align: center;
   }
 }
