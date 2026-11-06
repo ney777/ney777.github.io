@@ -48,6 +48,12 @@ layout: default
       {% include scholar_stats.liquid %}
     {% endif %}
 
+    <!-- Visitor stats -->
+    {% if site.enable_visitor_counter and page.visitor_stats and page.visitor_stats.enabled %}
+      <h2>site statistics</h2>
+      {% include visitor_stats.liquid %}
+    {% endif %}
+
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <section class="card mt-3 p-3 about-card about-card--news">
